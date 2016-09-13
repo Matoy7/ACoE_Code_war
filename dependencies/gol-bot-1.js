@@ -91,7 +91,7 @@
 		var plan;
 		if (data.generation === 1) {
 			planIndex = 0;
-      fenceLocation = 0;
+			fenceLocation = 0;
 		}
 		if (data.generation < 200) {
 			plan = ['spaceship'];
@@ -158,21 +158,21 @@
 	var planIndex = 0;
 	var fenceLocation = 0;
 	var bots = [
-		{name: 'TRAINING_BOT_ALPHA',   icon:'bot', cb: bot1},
-		{name: 'TRAINING_BOT_BRAVO',   icon:'bot', cb: bot2},
-		{name: 'TRAINING_BOT_CHARLIE', icon:'bot', cb: bot3}
+	{name: 'TRAINING_BOT_ALPHA',   icon:'bot', cb: bot1},
+	{name: 'TRAINING_BOT_BRAVO',   icon:'bot', cb: bot2},
+	{name: 'TRAINING_BOT_CHARLIE', icon:'bot', cb: bot3}
 	];
 	//var b = (localStorage.getItem('game-of-life-training-bot-index') || 0) % bots.length;
 	var b = getRnd(0, bots.length-1);
-    var bot = bots[b];        
+	var bot = bots[b];        
     //b = (b + 1) % bots.length;
     //localStorage.setItem('game-of-life-training-bot-index', b);	
-	setTimeout(function registerArmy() {
-		window.registerArmy({
-			name: bot.name,
-			icon: bot.icon,
-			cb: bot.cb
-		});
-	}, 2000);
+    setTimeout(function registerArmy() {
+    	window.registerArmy({
+    		name: bot.name,
+    		icon: bot.icon,
+    		cb: bot.cb
+    	});
+    }, 2000);
 
 })();
