@@ -1,0 +1,76 @@
+ 
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Log Printer in Javascript
+	</title>
+
+	<input type="file" id="fileinput"/>
+	<script type="text/javascript">
+		function fileToArray(evt) {
+			pattern=[];
+			patternIndex=0;
+			var file = this.files[0];
+			var reader = new FileReader();
+			reader.onload = function(progressEvent){
+				var lines = reader.result.split('\n');
+
+				for(lineIndex in lines){
+
+					if (lines[lineIndex].includes("!") || !lines[lineIndex] || 1 === lines[lineIndex].length){
+						continue;
+					}
+					pattern[patternIndex]=lines[lineIndex];
+					patternIndex++;
+				}
+
+				console.log('if (data.budget >= ' + getPatternBudget(pattern)+') {');
+				getPattenArray(pattern);
+				console.log('}');
+
+			};
+			reader.readAsText(file);
+
+		};
+
+		function getPattenArray(lines){
+
+			for(lineIndex in lines){
+				printPattenLine(lines[lineIndex],lineIndex);
+			}
+		}
+
+		function printPattenLine(line, lineIndex){
+			for(charIndex in line){
+				if ('O'==line[charIndex]){
+					console.log('pixels.push([c+'+lineIndex+', r+'+charIndex+']);');
+				}
+			}
+		}
+
+		function getPatternBudget(lines){
+			budget=0;
+			for(lineIndex in lines){
+				budget=budget+(lines[lineIndex].match(new RegExp("O", "g"))|| []).length;
+			}
+			return budget;
+		}
+
+		function mirrorPattern(lines){
+			retPattern=[];
+			size=lineIndex.length;
+			for(lineIndex in lines){
+				retPattern[size]=lines[lineIndex];
+				size--;
+			}
+			return retPattern;
+		}
+
+
+		document.getElementById('fileinput').addEventListener('change', fileToArray, false);
+	</script>
+</head>
+
+</html>

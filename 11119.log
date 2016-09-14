@@ -1,41 +1,3 @@
-//IMPROVE THIS CODE
-
-(function() {
-
-	//REGISTER ARMY
-	setTimeout(function registerArmy() {
-		window.registerArmy({
-			name: 'USER',
-			icon: 'user',
-			cb: cb
-		});
-	}, 0);
-
-	//ALGORITHM CODE
-	var plan = [
-	'glider'		
-	];
-	var planIndex = 0;
-
-	function cb(data) {
-		var pixels = [];
-
-		if (plan[planIndex] === 'glider') {
-			pixels = tryPlaceGlider(data);
-		}
-		if (pixels.length > 0) {
-			planIndex = (planIndex + 1) % plan.length;
-		}
-		return pixels;
-	}
-
-
-	function tryPlaceGlider(data) {
-		var pixels = [];
-		var r, c;		
-
-		c = Math.floor(Math.random() * (data.cols - 2));
-		r = 0;
 if (data.budget >= 36) {
 pixels.push([c+0, r+0]);
 pixels.push([c+0, r+1]);
@@ -74,14 +36,3 @@ pixels.push([c+10, r+3]);
 pixels.push([c+11, r+2]);
 pixels.push([c+11, r+3]);
 }
-
-
-
-
-
-
-
-		return pixels;
-	}
-
-})();
