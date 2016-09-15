@@ -19,17 +19,14 @@
 
 				for(lineIndex in lines){
 
-					if (lines[lineIndex].includes("!") || !lines[lineIndex] || 1 === lines[lineIndex].length){
+					if (lines[lineIndex].includes("#") || !lines[lineIndex] || 1 === lines[lineIndex].length){
 						continue;
 					}
 					pattern[patternIndex]=lines[lineIndex];
 					patternIndex++;
 				}
 
-				console.log('if (data.budget >= ' + getPatternBudget(pattern)+') {');
 				getPattenArray(pattern);
-				console.log('}');
-
 			};
 			reader.readAsText(file);
 
@@ -37,37 +34,19 @@
 
 		function getPattenArray(lines){
 
-			for(lineIndex in lines){
-				printPattenLine(lines[lineIndex],lineIndex);
-			}
-		}
-
-		function printPattenLine(line, lineIndex){
-			for(charIndex in line){
-				if ('O'==line[charIndex]){
-					console.log('pixels.push([c+'+lineIndex+', r+'+charIndex+']);');
+			var retString='';
+			for(i in lines){
+				retString=retString+'['+lines[i].split(" ")[0]+','+lines[i].split(" ")[1].replace('\r','').replace('\n','')+']';
+				if (i!=lines.length-1){
+					retString=retString+',';
 				}
 			}
+			console.log('['+retString+']');
 		}
 
-		function getPatternBudget(lines){
-			budget=0;
-			for(lineIndex in lines){
-				budget=budget+(lines[lineIndex].match(new RegExp("O", "g"))|| []).length;
-			}
-			return budget;
+		function getPatternBudget(pixels){
+			return pixels.length;
 		}
-
-		function mirrorPattern(lines){
-			retPattern=[];
-			size=lineIndex.length;
-			for(lineIndex in lines){
-				retPattern[size]=lines[lineIndex];
-				size--;
-			}
-			return retPattern;
-		}
-
 
 		document.getElementById('fileinput').addEventListener('change', fileToArray, false);
 	</script>

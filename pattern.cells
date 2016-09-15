@@ -1,8 +1,7 @@
-!Name: Integral sign
-!The nineteenth most common still life.
-!http://www.conwaylife.com/wiki/index.php?title=Integral_sign
-...OO
-..O.O
+!Name: Glider
+!Author: Richard K. Guy
+!The smallest, most common, and first discovered spaceship.
+!www.conwaylife.com/wiki/index.php?title=Glider
+.O
 ..O
-O.O
-OO
+OOO
