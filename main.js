@@ -45,9 +45,6 @@ var vacum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-1
 	function cb(data) {
 		var pixels = [];
 		
-		//console.log('ship='+ship);
-		//console.log('beehive='+beehive);
-		
 		pixels = tryPlacePattern(data,plan[planIndex])		
 		
 		if (pixels.length > 0){			
@@ -60,15 +57,12 @@ var vacum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-1
 	function tryPlacePattern(data, patternArr) {
 		var pixels = [];
 		
-		//console.log('shape:'+patternArr.shape);
-		
-		if (data.budget == getPatternSize(patternArr.shape)) {
 						
-			if (data.budget >= getPatternSize(patternArr.shape)) {
-				pixels=insertPatternByArray(patternArr);
-			}
-			console.log(pixels);
+		if (data.budget >= getPatternSize(patternArr.shape)) {
+			pixels=insertPatternByArray(patternArr);
 		}
+		console.log(pixels);
+
 		return pixels;
 	}
 
