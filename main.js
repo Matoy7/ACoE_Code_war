@@ -13,6 +13,12 @@
 //   -------------------------------------------------- ARRAY OF SHAPES ------------------------------------------------------------
 
 //-------------------- ATTACK
+
+var glider = [[0,-1],[1, 0],[-1, 1],[0, 1],[1, 1]];
+
+var lightweight_spaceship_horizontal = [[-1, -2],[2, -2],[-2, -1],[-2, 0],[2, 0],[-2, 1],[-1, 1],[0, 1],[1, 1]];
+var lightweight_spaceship_vertical = [[-2, -1],[-2, 2],[-1, -2],[0, -2],[0, 2],[1,-2],[ 1,-1],[1, 0],[1, 1]];
+
 var ship=[[-1,-4],[0,-4],[1,-4],[2,-4],[3,-4],[4,-4],[-3,-3],[-2,-3],[4,-3],[-5,-2],[-4,-2],[-2,-2],[4,-2],[-1,-1],[3,-1],[1,0],[1,1],[2,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[3,3],[4,3],[2,4],[3,4]];
 var airforce=[[0,-7],[-1,-6],[1,-6],[0,-5],[-2,-3],[-1,-3],[0,-3],[1,-3],[2,-3],[-3,-2],[3,-2],[5,-2],[6,-2],[-4,-1],[-2,-1],[-1,-1],[3,-1],[5,-1],[6,-1],[-4,0],[-2,0],[1,0],[3,0],[-7,1],[-6,1],[-4,1],[0,1],[1,1],[3,1],[-7,2],[-6,2],[-4,2],[2,2],[-3,3],[-2,3],[-1,3],[0,3],[1,3],[-1,5],[-2,6],[0,6],[-1,7]];
 
@@ -29,44 +35,58 @@ var vacum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-1
 	//ALGORITHM CODE
 
 	var plan = [
-	'glider'		
+		{'shape':lightweight_spaceship_vertical,c:20,r:10,flipHorizontal:true,flipVertical:true},
+		{'shape':lightweight_spaceship_vertical,c:380,r:15,flipHorizontal:true,flipVertical:true},
+		{'shape':lightweight_spaceship_vertical,c:360,r:15,flipHorizontal:false,flipVertical:true},
+		{'shape':lightweight_spaceship_vertical,c:40,r:10,flipHorizontal:false,flipVertical:true},
 	];
 	var planIndex = 0;
 
 	function cb(data) {
 		var pixels = [];
-		if (data.generation === 1) {
-			fenceLocation = 0;
+		
+		//console.log('ship='+ship);
+		//console.log('beehive='+beehive);
+		
+		pixels = tryPlacePattern(data,plan[planIndex])		
+		
+		if (pixels.length > 0){			
+			planIndex = (planIndex+1)%plan.length;			
 		}
-		pixels = tryPlacePattern(data,bigs);
 		return pixels;
 	}
 
 
 	function tryPlacePattern(data, patternArr) {
 		var pixels = [];
-		if (data.generation == getPatternSize(patternArr)) {
 		
-		var r, c;		
+		//console.log('shape:'+patternArr.shape);
 		
-
-		//cols - 0 to 400, row - o to 100
-		c = 200;
-		r = 30;
-
-		if (data.budget >= getPatternSize(patternArr)) {
-			pixels=insertPatternByArray(patternArr,c,r);
+		if (data.budget == getPatternSize(patternArr.shape)) {
+						
+			if (data.budget >= getPatternSize(patternArr.shape)) {
+				pixels=insertPatternByArray(patternArr);
+			}
+			console.log(pixels);
 		}
-		console.log(pixels);
-	}
 		return pixels;
 	}
 
-	function insertPatternByArray(pattern,col, row){
+	function insertPatternByArray(pattern){
 		retArray=[];
-		for (i in pattern){
+		
+		//cols - 0 to 400, row - o to 100
+		var col = pattern.c;
+		var row = pattern.r;
+		
+		var flipH = pattern.flipHorizontal? -1:1;
+		var flipV = pattern.flipVertical? -1:1;
+		
+		console.log('pattern shep'+pattern.shape);
+		
+		for (i in pattern.shape){
 
-			retArray.push([col+pattern[i][0],row-pattern[i][1]]);
+			retArray.push([col+flipH * pattern.shape[i][0],row-flipV *pattern.shape[i][1]]);
 		}
 		return retArray;
 	}
