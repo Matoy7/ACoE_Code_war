@@ -87,7 +87,7 @@
 	// bots --------------------------------------------------------------------------------------------------------------
 
 	var bot1 = function bot1(data) {
-		return [];
+		 
 		var pixels = [];
 		var plan;
 		if (data.generation === 1) {
@@ -160,8 +160,8 @@
 	var fenceLocation = 0;
 	var bots = [
 	{name: 'TRAINING_BOT_ALPHA',   icon:'bot', cb: bot1},
-/*	{name: 'TRAINING_BOT_BRAVO',   icon:'bot', cb: bot2},
-{name: 'TRAINING_BOT_CHARLIE', icon:'bot', cb: bot3}*/
+ {name: 'TRAINING_BOT_BRAVO',   icon:'bot', cb: bot2},
+{name: 'TRAINING_BOT_CHARLIE', icon:'bot', cb: bot3} 
 ];
 	//var b = (localStorage.getItem('game-of-life-training-bot-index') || 0) % bots.length;
 	var b = getRnd(0, bots.length-1);
