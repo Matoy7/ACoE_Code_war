@@ -164,7 +164,7 @@
 {name: 'TRAINING_BOT_CHARLIE', icon:'bot', cb: bot3} 
 ];
 	//var b = (localStorage.getItem('game-of-life-training-bot-index') || 0) % bots.length;
-	var b = getRnd(0, bots.length-1);
+	var b = 1;
 	var bot = bots[b];        
     //b = (b + 1) % bots.length;
     //localStorage.setItem('game-of-life-training-bot-index', b);	
