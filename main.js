@@ -113,15 +113,9 @@ var eater =[[-2,-2],[-1,-2],[-2,-1],[0,-1],[0,0],[0,1],[1,1]];
 	function hasEnoughBudgetForShape(data,shape){
 		return (data.budget >= getShapeSize(shape.pattern));
 	}
-
-	function isShapeWasPlaced(pixels){
-		return (pixels.length > 0);
-	}
-
+ 
 	function getShapeSize(pixels){
 		return pixels.length;
 	}
-
-
-
+ 
 })();
