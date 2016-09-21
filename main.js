@@ -30,9 +30,10 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 	// ------------ Board Info: cols - 0 to 400, row - o to 100
 	
 	var plan = [
-	{pattern:lightweight_spaceship,c:275,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 5, padding_c: 0, padding_r: 25},
 	{pattern:lightweight_spaceship,c:10,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 5, padding_c: 25, padding_r: 0},
- 	{pattern:beehive,c:10,r:90,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 10, padding_r: 0},
+	
+ 	{pattern:acron,c:10,r:90,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 20, padding_r: 0},
+ 	{pattern:lightweight_spaceship,c:10,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 5, padding_c: 25, padding_r: 0},
 
 	];
 
