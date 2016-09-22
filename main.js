@@ -5,8 +5,18 @@
 	setTimeout(function registerArmy() {
 		window.registerArmy({
 			pattern: 'USER',
+			name: 'ADM ACoE',
 			icon: 'user',
 			cb: cb
+		});
+	}, 0);
+
+	setTimeout(function registerArmy() {
+		window.registerArmy({
+			pattern: 'USER',
+			name: 'Yotam The Zero',
+			icon: 'user',
+			cb: cb2
 		});
 	}, 0);
 //   -------------------------------------------------- ARRAY OF SHAPES ------------------------------------------------------------
@@ -17,6 +27,9 @@ var gosperGliderGun = [[6,-4],[4,-3],[6,-3],[-6,-2],[-5,-2],[2,-2],[3,-2],[16,-2
 var lightweight_spaceship = [[-1, -2],[2, -2],[-2, -1],[-2, 0],[2, 0],[-2, 1],[-1, 1],[0, 1],[1, 1]];
 var ship=[[-1,-4],[0,-4],[1,-4],[2,-4],[3,-4],[4,-4],[-3,-3],[-2,-3],[4,-3],[-5,-2],[-4,-2],[-2,-2],[4,-2],[-1,-1],[3,-1],[1,0],[1,1],[2,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[3,3],[4,3],[2,4],[3,4]];
 var airforce=[[0,-7],[-1,-6],[1,-6],[0,-5],[-2,-3],[-1,-3],[0,-3],[1,-3],[2,-3],[-3,-2],[3,-2],[5,-2],[6,-2],[-4,-1],[-2,-1],[-1,-1],[3,-1],[5,-1],[6,-1],[-4,0],[-2,0],[1,0],[3,0],[-7,1],[-6,1],[-4,1],[0,1],[1,1],[3,1],[-7,2],[-6,2],[-4,2],[2,2],[-3,3],[-2,3],[-1,3],[0,3],[1,3],[-1,5],[-2,6],[0,6],[-1,7]];
+var puffer2 = [[-8, -2], [-7, -2], [-6, -2], [6, -2], [7, -2], [8, -2], [-9, -1], [-6, -1], [5, -1], [8, -1], [-6, 0], [-1, 0], [0, 0], [1, 0], [8, 0], [-6, 1], [-1, 1], [2, 1], [8, 1], [-7, 2], [-2, 2], [7, 2]];
+var lidka = [[-3, -7], [-4, -6], [-2, -6], [-3, -5], [4, 3], [2, 4], [4, 4], [1, 5], [2, 5], [4, 5], [0, 7], [1, 7], [2, 7]];
+var blinker = [[-1, 0], [0, 0], [1, 0]];
 
 
 //--------------------DEFENCE
@@ -29,24 +42,97 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 	// ------------ Plan for the game
 	// ------------ Board Info: cols - 0 to 400, row - o to 100
 	
-	var plan = [
-	{pattern:lightweight_spaceship,c:10,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 5, padding_c: 25, padding_r: 0},
-	
- 	{pattern:acron,c:10,r:90,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 20, padding_r: 0},
- 	{pattern:lightweight_spaceship,c:10,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 5, padding_c: 25, padding_r: 0},
+	var Yotam_plan = [
+		{pattern:lightweight_spaceship,c:10,r:5,rotate:true,flipHorizontal:true,flipVertical:true, count: 2, padding_c: 25, padding_r: 0},
+		{pattern:lightweight_spaceship,c:380,r:5,rotate:true,flipHorizontal:true,flipVertical:true, count: 2, padding_c: -25, padding_r: 0},
+		// {pattern:lightweight_spaceship,c:380,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 3, padding_c: 0, padding_r: 0},
+		// {pattern:acron,c:10,r:50,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 20, padding_r: 0},
+		// {pattern:acron,c:10,r:50,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 20, padding_r: 0},
+		{pattern:acron,c:10,r:50,rotate:true,flipHorizontal:true,flipVertical:true, count: 10, padding_c: 20, padding_r: 0},
+		{pattern:acron,c:390,r:50,rotate:true,flipHorizontal:true,flipVertical:true, count: 10, padding_c: -20, padding_r: 0},
+		{pattern:acron,c:10,r:90,rotate:true,flipHorizontal:true,flipVertical:true, count: 10, padding_c: 20, padding_r: 0},
+		{pattern:acron,c:390,r:90,rotate:true,flipHorizontal:true,flipVertical:true, count: 10, padding_c: -20, padding_r: 0},
+		{pattern:lightweight_spaceship,c:10,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 5, padding_c: 25, padding_r: 0}
+
+
 
 	];
+	var strategy1 = [
+        // won 3 :0 , it won against all Kalish robots (there is a rick on the attacker stretegy that kalish build)
+        { pattern: lightweight_spaceship, c: 10, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 10, padding_c: 10, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 250, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 10, padding_c: 10, padding_r: 0 },
+        { pattern: acron, c: 10, r: 90, rotate: true, flipHorizontal: true, flipVertical: true, count: 15, padding_c: 30, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 200, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 10, padding_c: 10, padding_r: 0 }
 
+
+        ];
+
+        var strategy2 = [
+
+        // it wins couple of kalish bots. good strategy , meybe we can improve it,
+        { pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: 15, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
+
+        { pattern: acron, c: 5, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 20, padding_c: 30, padding_r: 0 },
+
+        { pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: 15, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
+
+        { pattern: acron, c: 5, r: 50, rotate: false, flipHorizontal: false, flipVertical: false, count: 20, padding_c: 30, padding_r: 0 },
+
+        { pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: 15, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
+
+        { pattern: acron, c: 5, r: 90, rotate: false, flipHorizontal: false, flipVertical: false, count: 20, padding_c: 30, padding_r: 0 },
+
+        { pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 15, padding_c: 15, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 15, padding_c: -15, padding_r: 0 },
+
+        ];
+
+        var strategy3 = [
+        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
+        // great strategy , wins all kalish bots.
+       // { pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 2, padding_c: 40, padding_r: 0 },
+		//{ pattern: acron, c: 50, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 3, padding_c: 100, padding_r: 0 },
+
+        { pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: 40, padding_r: 0 },
+        { pattern: puffer2, c: 380, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: -40, padding_r: 0 },
+
+         { pattern: acron, c: 5, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 10, padding_c: 30, padding_r: 0 },
+         { pattern: acron, c: 395, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 10, padding_c: -30, padding_r: 0 },
+         { pattern: acron, c: 5, r: 90, rotate: false, flipHorizontal: false, flipVertical: false, count: 20, padding_c: 30, padding_r: 0 },
+        
+
+        { pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: 15, padding_r: 0 },
+        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
+           { pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: 40, padding_r: 0 },
+        { pattern: puffer2, c: 380, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: -40, padding_r: 0 }
+
+        ];
+
+        
 
 	// ------------ init indexes before the callback kicks in...
+	var plan = strategy3;
 	var planIndex = 0;
 	var shapeCounterIndex=0;
+
+
+	var plan2 = Yotam_plan;
+	var planIndex2 = 0;
+	var shapeCounterIndex2=0;
 
 
 	function cb(data) {
 		var pixels = [];				
 
 		var currentShape=plan[planIndex];
+
+		if(data.generation==1){
+			planIndex=0;
+			shapeCounterIndex=0;
+		}
 
 		if (hasEnoughBudgetForShape(data,currentShape)) {
 			
@@ -70,7 +156,42 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 			}
 		}
 		return pixels;
-	}			
+	}	
+
+		function cb2(data) {
+		var pixels = [];				
+
+		var currentShape=plan2[planIndex2];
+
+		if(data.generation==1){
+			planIndex2=0;
+			shapeCounterIndex2=0;
+		}
+
+		if (hasEnoughBudgetForShape(data,currentShape)) {
+			
+			// ------------ calculate the relavent c and r....
+			var cPos=(currentShape.c+shapeCounterIndex2*currentShape.padding_c) % 400;
+			var rPos=(currentShape.r+shapeCounterIndex2*currentShape.padding_r) % 100;
+
+			pixels=insertShape(currentShape, cPos, rPos);
+			shapeCounterIndex2++;
+
+			// ------------ did we finish building a series of shape?
+			if (shapeCounterIndex2==currentShape.count){
+
+				// ------------ move the next plan index
+				shapeCounterIndex2=0;
+				planIndex2 = (planIndex2+1) % plan2.length;
+
+			}
+			// else{
+			// 	// ------------ move the next shape index
+			// 	shapeCounterIndex2++;
+			// }
+		}
+		return pixels;
+	}				
 
 
 
