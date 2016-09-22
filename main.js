@@ -43,8 +43,8 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 	// ------------ Board Info: cols - 0 to 400, row - o to 100
 	
 	var Yotam_plan = [
-		{pattern:lightweight_spaceship,c:10,r:5,rotate:true,flipHorizontal:true,flipVertical:true, count: 2, padding_c: 25, padding_r: 0},
-		{pattern:lightweight_spaceship,c:380,r:5,rotate:true,flipHorizontal:true,flipVertical:true, count: 2, padding_c: -25, padding_r: 0},
+	{pattern:lightweight_spaceship,c:10,r:5,rotate:true,flipHorizontal:true,flipVertical:true, count: 2, padding_c: 25, padding_r: 0},
+	{pattern:lightweight_spaceship,c:380,r:5,rotate:true,flipHorizontal:true,flipVertical:true, count: 2, padding_c: -25, padding_r: 0},
 		// {pattern:lightweight_spaceship,c:380,r:10,rotate:true,flipHorizontal:true,flipVertical:true, count: 3, padding_c: 0, padding_r: 0},
 		// {pattern:acron,c:10,r:50,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 20, padding_r: 0},
 		// {pattern:acron,c:10,r:50,rotate:true,flipHorizontal:true,flipVertical:true, count: 40, padding_c: 20, padding_r: 0},
@@ -56,8 +56,8 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 
 
 
-	];
-	var strategy1 = [
+		];
+		var strategy1 = [
         // won 3 :0 , it won against all Kalish robots (there is a rick on the attacker stretegy that kalish build)
         { pattern: lightweight_spaceship, c: 10, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 10, padding_c: 10, padding_r: 0 },
         { pattern: lightweight_spaceship, c: 250, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 10, padding_c: 10, padding_r: 0 },
@@ -96,22 +96,22 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
        // { pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 2, padding_c: 40, padding_r: 0 },
 		//{ pattern: acron, c: 50, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 3, padding_c: 100, padding_r: 0 },
 
-        { pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: 40, padding_r: 0 },
-        { pattern: puffer2, c: 380, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: -40, padding_r: 0 },
+		{ pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: 40, padding_r: 0 },
+		{ pattern: puffer2, c: 380, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: -40, padding_r: 0 },
 
-         { pattern: acron, c: 5, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 10, padding_c: 30, padding_r: 0 },
-         { pattern: acron, c: 395, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 10, padding_c: -30, padding_r: 0 },
-         { pattern: acron, c: 5, r: 90, rotate: false, flipHorizontal: false, flipVertical: false, count: 20, padding_c: 30, padding_r: 0 },
-        
+		{ pattern: acron, c: 5, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 10, padding_c: 30, padding_r: 0 },
+		{ pattern: acron, c: 395, r: 80, rotate: false, flipHorizontal: false, flipVertical: false, count: 10, padding_c: -30, padding_r: 0 },
+		{ pattern: acron, c: 5, r: 90, rotate: false, flipHorizontal: false, flipVertical: false, count: 20, padding_c: 30, padding_r: 0 },
 
-        { pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: 15, padding_r: 0 },
-        { pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
-           { pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: 40, padding_r: 0 },
-        { pattern: puffer2, c: 380, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: -40, padding_r: 0 }
 
-        ];
+		{ pattern: lightweight_spaceship, c: 5, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: 15, padding_r: 0 },
+		{ pattern: lightweight_spaceship, c: 390, r: 5, rotate: true, flipHorizontal: true, flipVertical: true, count: 5, padding_c: -15, padding_r: 0 },
+		{ pattern: puffer2, c: 5, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: 40, padding_r: 0 },
+		{ pattern: puffer2, c: 380, r: 5, rotate: false, flipHorizontal: false, flipVertical: true, count: 4, padding_c: -40, padding_r: 0 }
 
-        
+		];
+
+
 
 	// ------------ init indexes before the callback kicks in...
 	var plan = strategy3;
@@ -141,7 +141,8 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 			var rPos=(currentShape.r+shapeCounterIndex*currentShape.padding_r) % 100;
 
 			pixels=insertShape(currentShape, cPos, rPos);
-
+			shapeCounterIndex++;
+			
 			// ------------ did we finish building a series of shape?
 			if (shapeCounterIndex==currentShape.count){
 
@@ -150,15 +151,12 @@ var vacuum=[[-23,-21],[-22,-21],[2,-21],[3,-21],[-23,-20],[-22,-20],[2,-20],[0,-
 				planIndex = (planIndex+1) % plan.length;
 
 			}
-			else{
-				// ------------ move the next shape index
-				shapeCounterIndex++;
-			}
+
 		}
 		return pixels;
 	}	
 
-		function cb2(data) {
+	function cb2(data) {
 		var pixels = [];				
 
 		var currentShape=plan2[planIndex2];
