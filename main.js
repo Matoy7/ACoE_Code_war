@@ -5,7 +5,7 @@
 	setTimeout(function registerArmy() {
 		window.registerArmy({
 			pattern: 'USER',
-			name: 'ADM ACoE',
+			name: 'Hagay',
 			icon: 'user',
 			cb: cb
 		});
@@ -14,7 +14,7 @@
 	setTimeout(function registerArmy() {
 		window.registerArmy({
 			pattern: 'USER',
-			name: 'Yotam The Zero',
+			name: 'Yotam',
 			icon: 'user',
 			cb: cb2
 		});
